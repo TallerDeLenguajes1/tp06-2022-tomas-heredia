@@ -8,7 +8,7 @@ namespace Ejercicio2{
             Investigador
         }
         public string Nombre;
-        public string Alpellido;
+        public string Apellido;
 
         public DateTime Nacimiento;
 
@@ -22,23 +22,20 @@ namespace Ejercicio2{
 
         public cargo Cargo;
         
-        public void Antiguedad(){
-            DateTime FechaActual = DateTime();
-            int ano = FechaActual.Year - Ingreso.Year;
-            int mes = FechaActual.Month - Ingreso.Month;
-            int dia = FechaActual.day - Ingreso.day;
-            Console.WriteLine("La antiguedad es de : "+ano+" anios "+mes+" meses y "+dia+" dias");
-
+        public DateTime Antiguedad(){
+            DateTime FechaActual =new DateTime().Now;
+            return FechaActual.Year - Ingreso.Year;
         }
 
-        public void Edad(){
+        public int Edad(){
             DateTime FechaActual = DateTime();
             int edad = FechaActual.Year - Nacimiento.year;
             
-            Console.WriteLine("Edad : "+edad);
+            
+            return Edad;
         }
 
-        public void Juvilacion(){
+        public int Juvilacion(){
             if (Genero == "M")
             {
                 int juvi = 65 - Edad();
@@ -46,7 +43,28 @@ namespace Ejercicio2{
             {
                 int juvi = 60 - Edad();
             }
-            Console.WriteLine("Le faltan "+juvi+" anios para juvilarse");
+            
+            return juvi;
+        }
+
+        public double Salario(){
+            double adicional =0;
+            if (Antiguedad() < 25)
+            {
+                adicional = SueldoBasico*Antiguedad()/100;
+            }else
+            {
+                adicional = SueldoBasico*25/100;
+            }
+            if (Cargo == cargo.Ingeniero || Cargo == cargo.Especialista)
+            {
+                adicional = adicional + SueldoBasico/2;
+            }
+            if (EstadoCivil == "C")
+            {
+                adicional += 15000; 
+            }
+            return adicional + SueldoBasico;
         }
     }
 }
