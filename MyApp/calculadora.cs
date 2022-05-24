@@ -1,10 +1,12 @@
 namespace Ejercicio1{
     public class calculadora{
-        private double resultado;
+        public double resultado;
         public calculadora(double entrada){
             resultado = entrada;
         }
-        
+        public calculadora(){
+
+        }
 
         public double Suma(double termino){
         resultado += termino;
