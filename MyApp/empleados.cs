@@ -22,31 +22,33 @@ namespace Ejercicio2{
 
         public cargo Cargo;
         
-        public void Antiguedad(){
-            DateTime FechaActual = DateTime();
-            int ano = FechaActual.Year - Ingreso.Year;
-            int mes = FechaActual.Month - Ingreso.Month;
-            int dia = FechaActual.day - Ingreso.day;
-            Console.WriteLine("La antiguedad es de : "+ano+" anios "+mes+" meses y "+dia+" dias");
-
-        }
-
-        public void Edad(){
-            DateTime FechaActual = DateTime();
-            int edad = FechaActual.Year - Nacimiento.year;
+        public int Antiguedad(){
+            DateTime FechaActual = DateTime.Now;
+            int anio = FechaActual.Year - Ingreso.Year;
             
-            Console.WriteLine("Edad : "+edad);
+            return anio;
         }
 
-        public void Juvilacion(){
-            if (Genero == "M")
+        public int Edad(){
+            DateTime FechaActual = DateTime.Now;
+            int edad = FechaActual.Year - Nacimiento.Year;
+            
+            return edad;
+
+        }
+
+        public int Juvilacion(){
+            
+            if (Genero.Equals("M"))
             {
                 int juvi = 65 - Edad();
+                return juvi;
             }else
             {
                 int juvi = 60 - Edad();
+                return juvi;
             }
-            Console.WriteLine("Le faltan "+juvi+" anios para juvilarse");
+            
         }
     }
 }
