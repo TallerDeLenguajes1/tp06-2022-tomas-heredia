@@ -1,71 +1,62 @@
-﻿using Ejercicio1;
-int aux =0;
-int valor;
+﻿using Ejercicio2;
 
-calculadora calculadora = new calculadora(0);
-while (aux == 0)
+Random r= new Random ();
+Empleado Empleado1 = new Empleado();
+Empleado1.Alpellido = "Heredia";
+Empleado1.Nombre = "Tomas";
+Empleado1.Cargo = (cargos)r.Next(0,6);
+Empleado1.EstadoCivil = char.Parse("C");
+Empleado1.Genero = char.Parse("M");
+Empleado1.Nacimiento = new DateTime(2001, 4 , 20);
+Empleado1.Ingreso = new DateTime(2010, 5, 25);
+
+Empleado Empleado2 = new Empleado();
+Empleado2.Alpellido = "Knez";
+Empleado2.Nombre = "Irina";
+Empleado2.Cargo = (cargos)r.Next(0,6);
+Empleado2.EstadoCivil = char.Parse("C");
+Empleado2.Genero = char.Parse("F");
+Empleado2.Nacimiento = new DateTime(1998, 4 , 15);
+Empleado2.Ingreso = new DateTime(2010, 5, 25);
+
+Empleado Empleado3 = new Empleado();
+Empleado3.Alpellido = "Hernadez";
+Empleado3.Nombre = "Mateo";
+Empleado3.Cargo = (cargos)r.Next(0,6);
+Empleado3.EstadoCivil = char.Parse("S");
+Empleado3.Genero = char.Parse("M");
+Empleado3.Nacimiento = new DateTime(1999, 7 , 16);
+Empleado3.Ingreso = new DateTime(2011, 5, 25);
+
+Double Total = Empleado1.Salario() + Empleado2.Salario() + Empleado3.Salario();
+Console.WriteLine("Total en salarios: "+Total+"$");
+
+Empleado EmpleadoJuvilando = new Empleado();
+if (Empleado1.Juvilacion() <= Empleado2.Juvilacion())
 {
-    Console.WriteLine("ingrese la operacion deseada: 1_ Suma 2_Resta 3_Multiolicacion 4_Divicion 5_Limpiar 6_Salir");
-    string texto = Console.ReadLine();
-    int eleccion = Int32.Parse(texto);
-    switch (eleccion)
-    {
-        case 1:
-            Console.WriteLine("Ingrese el primer valor");
-            texto = Console.ReadLine();
-            valor = Int32.Parse(texto);
-            calculadora.Suma(valor);
-            Console.WriteLine("Ingrese el segundo valor");
-            texto = Console.ReadLine();
-            valor = Int32.Parse(texto);
-            calculadora.Suma(valor);
-            Console.WriteLine("El resultado es: "+ calculadora.resultado);
-            calculadora.Limpiar();
-        break;
-
-        case 2:
-            Console.WriteLine("Ingrese el primer valor");
-            texto = Console.ReadLine();
-            valor = Int32.Parse(texto);
-            calculadora.Resta(valor);
-            Console.WriteLine("Ingrese el segundo valor");
-            texto = Console.ReadLine();
-            valor = Int32.Parse(texto);
-            calculadora.Resta(valor);
-            Console.WriteLine("El resultado es: "+ calculadora.resultado);
-            calculadora.Limpiar();
-        break;
-
-        case 3:
-        Console.WriteLine("Ingrese el primer valor");
-            texto = Console.ReadLine();
-            valor = Int32.Parse(texto);
-            calculadora.Multoplicacion(valor);
-            Console.WriteLine("Ingrese el segundo valor");
-            texto = Console.ReadLine();
-            valor = Int32.Parse(texto);
-            calculadora.Multoplicacion(valor);
-            Console.WriteLine("El resultado es: "+ calculadora.resultado);
-            calculadora.Limpiar();
-        break;
-
-        case 4:
-        Console.WriteLine("Ingrese el primer valor");
-            texto = Console.ReadLine();
-            valor = Int32.Parse(texto);
-            calculadora.Divicion(valor);
-            Console.WriteLine("Ingrese el segundo valor");
-            texto = Console.ReadLine();
-            valor = Int32.Parse(texto);
-            calculadora.Divicion(valor);
-            Console.WriteLine("El resultado es: "+ calculadora.resultado);
-            calculadora.Limpiar();
-        break;
-        
-        default:
-            aux = 1;
-            break;
-    }
-
+    EmpleadoJuvilando = Empleado1;
+}else
+{
+    EmpleadoJuvilando = Empleado2;
 }
+if (Empleado3.Juvilacion() < EmpleadoJuvilando.Juvilacion())
+{
+    EmpleadoJuvilando = Empleado3;
+}
+
+Console.WriteLine("Empleado mas serca de la juvilacion:");
+Console.WriteLine(EmpleadoJuvilando.Alpellido+" "+EmpleadoJuvilando.Nombre);
+Console.WriteLine("Cargo: "+ EmpleadoJuvilando.Cargo);
+Console.WriteLine("Edad: "+ EmpleadoJuvilando.Edad());
+Console.WriteLine("Genero :"+ EmpleadoJuvilando.Genero);
+Console.WriteLine("Antiguedad: " + EmpleadoJuvilando.Antiguedad());
+Console.WriteLine("Estado civil :" +EmpleadoJuvilando.EstadoCivil);
+Console.WriteLine("Salario: "+EmpleadoJuvilando.Salario()+"$");
+
+
+
+
+    
+
+
 

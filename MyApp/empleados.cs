@@ -1,6 +1,9 @@
 namespace Ejercicio2{
     public class Empleado{
-        public enum cargo{
+        public Empleado(){
+
+        }
+        public enum cargos{
             Auxiliar,
             Administrativo,
             Ingeniero,
@@ -18,9 +21,9 @@ namespace Ejercicio2{
 
         public DateTime Ingreso;
 
-        public double SueldoBasico;
+        public double SueldoBasico = 38.900;
 
-        public cargo Cargo;
+        public cargos Cargo;
         
         public int Antiguedad(){
             DateTime FechaActual = DateTime.Now;
@@ -60,7 +63,7 @@ namespace Ejercicio2{
             {
                 adicional = SueldoBasico*25/100;
             }
-            if (Cargo == cargo.Ingeniero || Cargo == cargo.Especialista)
+            if (Cargo == cargos.Ingeniero || Cargo == cargos.Especialista)
             {
                 adicional = adicional + SueldoBasico/2;
             }
